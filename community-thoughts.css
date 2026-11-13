@@ -1,0 +1,204 @@
+.thoughts-panel {
+    margin: 28px 0;
+    padding: 20px;
+    border: 1px solid rgba(114, 214, 154, 0.18);
+    border-radius: 17px;
+    background: linear-gradient(145deg, rgba(17, 35, 26, 0.96), rgba(12, 25, 18, 0.96));
+}
+
+.thoughts-eyebrow {
+    color: var(--green);
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 0.16em;
+}
+
+.thoughts-heading h2 {
+    margin-top: 8px;
+    font-size: 24px;
+    letter-spacing: -0.04em;
+}
+
+.thoughts-heading p,
+.thought-form label span {
+    color: var(--muted);
+}
+
+.thoughts-heading p {
+    margin-top: 7px;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.thought-form {
+    display: grid;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.thought-form label {
+    color: #c5d2c9;
+    font-size: 11px;
+    font-weight: 650;
+}
+
+.thought-form label span {
+    font-weight: 400;
+}
+
+.thought-form input,
+.thought-form textarea {
+    width: 100%;
+    min-height: 42px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    outline: none;
+    background: #07110d;
+    color: var(--text);
+    font: inherit;
+    font-size: 12px;
+}
+
+.thought-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.thought-form input:focus,
+.thought-form textarea:focus {
+    border-color: rgba(114, 214, 154, 0.65);
+}
+
+.thought-form-footer,
+.thoughts-list-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.thought-form-footer {
+    margin-top: 5px;
+}
+
+.thought-status {
+    margin: 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.thought-status[data-state="error"] {
+    color: #ff9a8d;
+}
+
+.thought-status[data-state="success"] {
+    color: var(--green);
+}
+
+.thought-submit,
+.thought-refresh {
+    min-height: 38px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--green);
+    color: #082014;
+    cursor: pointer;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.thought-submit:disabled,
+.thought-refresh:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.thoughts-list-heading {
+    margin-top: 25px;
+    padding-top: 17px;
+    border-top: 1px solid var(--line);
+}
+
+.thoughts-list-heading h3 {
+    font-size: 15px;
+}
+
+.thought-refresh {
+    min-height: 32px;
+    border: 1px solid var(--line);
+    background: var(--surface-soft);
+    color: var(--muted);
+}
+
+.thought-refresh:hover {
+    border-color: rgba(114, 214, 154, 0.4);
+    color: var(--green);
+}
+
+.thoughts-list {
+    display: grid;
+    gap: 10px;
+    margin-top: 13px;
+}
+
+.thought-card {
+    padding: 14px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.thought-card-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.thought-card-header strong {
+    overflow: hidden;
+    font-size: 12px;
+    text-overflow: ellipsis;
+}
+
+.thought-card-header time {
+    flex: 0 0 auto;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.thought-card p {
+    margin: 9px 0 0;
+    color: #d2ddd7;
+    font-size: 12px;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.thoughts-placeholder {
+    margin: 0;
+    padding: 15px 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+@media (max-width: 500px) {
+    .thoughts-panel {
+        padding: 16px;
+    }
+
+    .thought-form-footer {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .thought-submit {
+        width: 100%;
+    }
+}

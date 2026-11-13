@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10291c">
+    <title>Sign in | FARMERS</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+    <main class="auth-shell">
+        <a class="auth-brand" href="index.html">FARMERS</a>
+        <section class="auth-card" aria-labelledby="authTitle">
+            <p class="auth-eyebrow">YOUR FARMERS ACCOUNT</p>
+            <h1 id="authTitle">Sign in or create an account</h1>
+            <p class="auth-intro">Use one email and password to access your profile, marketplace, community, and premium plans.</p>
+
+            <div class="auth-session" id="authSession" hidden>
+                <p id="signedInMessage"></p>
+                <button class="auth-primary" id="continueButton" type="button">Continue to FARMERS</button>
+                <button class="auth-secondary" id="signOutButton" type="button">Sign out</button>
+            </div>
+
+            <form id="authForm">
+                <label for="accountName">Name <span>(for new accounts)</span></label>
+                <input id="accountName" name="name" type="text" autocomplete="name" maxlength="60" placeholder="Your name">
+
+                <label for="accountEmail">Email address</label>
+                <input id="accountEmail" name="email" type="email" autocomplete="email" required maxlength="254" placeholder="you@example.com">
+
+                <label for="accountPassword">Password</label>
+                <input id="accountPassword" name="password" type="password" autocomplete="current-password" required minlength="8" placeholder="At least 8 characters">
+
+                <div class="auth-actions">
+                    <button class="auth-primary" id="signInButton" type="submit">Sign in</button>
+                    <button class="auth-secondary" id="signUpButton" type="button">Create account</button>
+                </div>
+            </form>
+
+            <p class="auth-status" id="authStatus" role="status" aria-live="polite"></p>
+            <a class="auth-home" href="index.html">Back to home</a>
+        </section>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="account-client.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

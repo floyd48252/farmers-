@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Buy farm produce, post products for sale, and make offers directly to farmers.">
+    <title>Marketplace | FARMERS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="marketplace.css">
+</head>
+<body>
+    <header class="topbar">
+        <a href="index.html" class="brand">
+            <div class="logo"><img class="logo-image" src="crop-rows.jpg" alt="FARMERS logo"></div>
+            <div class="brand-text"><strong>FARMERS</strong><span>Agricultural Network</span></div>
+        </a>
+        <div class="top-actions">
+            <span class="status-btn"><span class="status-dot"></span><span id="statusText">Online</span></span>
+            <a class="market-account-link" id="marketAccountLink" href="auth.html?return=marketplace.html">Sign in</a>
+        </div>
+    </header>
+
+    <nav class="primary-nav" aria-label="Primary navigation">
+        <a href="index.html" class="primary-nav-item"><span>Home</span></a>
+        <a href="farm-hub.html" class="primary-nav-item"><span>Farm</span></a>
+        <a href="marketplace.html" class="primary-nav-item active" aria-current="page"><span>Market</span></a>
+        <a href="agribusiness.html" class="primary-nav-item"><span>Business</span></a>
+        <a href="profile.html" class="primary-nav-item"><span>Profile</span></a>
+    </nav>
+
+    <main class="market-page">
+        <section class="market-hero">
+            <div class="market-hero-copy">
+                <span class="market-eyebrow">THE FARMERS MARKETPLACE</span>
+                <h1>Good food.<br><span>Fair deals.</span></h1>
+                <p>Discover fresh produce, connect with farmers, and make an offer that works for you.</p>
+                <a class="market-hero-link" href="#listings">Explore products <span aria-hidden="true">↓</span></a>
+            </div>
+            <div class="market-hero-art" aria-hidden="true">
+                <img src="market-produce.jpg" alt="">
+                <span class="market-art-badge"><strong>Grown with care</strong><small>From local farms</small></span>
+            </div>
+        </section>
+
+        <section class="market-actions" aria-label="Marketplace actions">
+            <div>
+                <span class="market-kicker">FOR FARMERS</span>
+                <h2>Have a harvest to sell?</h2>
+                <p>Post what you have available and let buyers send you their offers.</p>
+            </div>
+            <button type="button" class="market-primary-button" id="openListing">+ Post a product</button>
+        </section>
+
+        <section class="market-controls" id="listings" aria-labelledby="listingsTitle">
+            <div class="market-section-heading">
+                <div>
+                    <span class="market-kicker">FRESH FROM THE FARM</span>
+                    <h2 id="listingsTitle">Browse products</h2>
+                    <p class="market-listings-note">New farmer listings are shared with the FARMERS community and stay available until deleted by their owner.</p>
+                </div>
+                <span class="market-count" id="listingCount" aria-live="polite"></span>
+            </div>
+            <div class="market-search">
+                <span aria-hidden="true">⌕</span>
+                <input id="marketSearch" type="search" aria-label="Search products, farms, or locations" placeholder="Search products, farms, or locations">
+                <button type="button" id="clearSearch" aria-label="Clear search" hidden>×</button>
+            </div>
+            <div class="market-categories" aria-label="Filter by category">
+                <button type="button" class="market-chip active" data-filter="all" aria-pressed="true">All products</button>
+                <button type="button" class="market-chip" data-filter="crops" aria-pressed="false">Crops</button>
+                <button type="button" class="market-chip" data-filter="livestock" aria-pressed="false">Livestock</button>
+                <button type="button" class="market-chip" data-filter="poultry" aria-pressed="false">Poultry</button>
+                <button type="button" class="market-chip" data-filter="fish" aria-pressed="false">Fish</button>
+                <button type="button" class="market-chip" data-filter="inputs" aria-pressed="false">Farm inputs</button>
+            </div>
+            <div class="product-grid" id="productGrid" aria-live="polite"></div>
+            <p class="market-empty" id="emptyState" hidden>No products match your search. Try another term or category.</p>
+        </section>
+
+        <p class="market-storage-note" id="storageNotice" role="status" hidden></p>
+        <p class="market-storage-note" id="marketBackendNotice" role="status" aria-live="polite" hidden></p>
+
+        <footer class="market-footer">
+            <strong>FARMERS</strong>
+            <p>Helping farmers and buyers grow together.</p>
+            <small>FARMERS © 2026</small>
+        </footer>
+    </main>
+
+    <dialog class="market-dialog" id="listingDialog" aria-labelledby="listingDialogTitle">
+        <form class="market-form" id="listingForm">
+            <div class="market-dialog-heading">
+                <div><span class="market-kicker">SELL ON FARMERS</span><h2 id="listingDialogTitle">Post a product</h2></div>
+                <button class="market-icon-button" type="button" data-close-dialog aria-label="Close">×</button>
+            </div>
+            <p class="market-form-intro">Tell buyers what you have available. The phone number you provide is shown on your listing so buyers can text you to order. You can also review received offers on your own listings.</p>
+            <label>Product name<input name="name" type="text" maxlength="70" placeholder="e.g. Fresh tomatoes" required></label>
+            <div class="market-form-row">
+                <label>Category
+                    <select name="category" required>
+                        <option value="">Choose category</option>
+                        <option value="crops">Crops</option>
+                        <option value="livestock">Livestock</option>
+                        <option value="poultry">Poultry</option>
+                        <option value="fish">Fish</option>
+                        <option value="inputs">Farm inputs</option>
+                    </select>
+                </label>
+                <label>Price (KSh)<input name="price" type="number" min="1" step="1" placeholder="4500" required></label>
+            </div>
+            <div class="market-form-row">
+                <label>Sold per<input name="unit" type="text" maxlength="30" placeholder="bag, crate, kg..." required></label>
+                <label>Quantity available<input name="quantity" type="number" min="1" step="1" placeholder="20" required></label>
+            </div>
+            <label>Farm / seller name<input name="seller" type="text" maxlength="60" placeholder="Your name or farm" required></label>
+            <label>Location<input name="location" type="text" maxlength="60" placeholder="e.g. Nakuru" required></label>
+            <label>Phone number for orders and offers<input name="contact" type="tel" maxlength="30" autocomplete="tel" placeholder="e.g. +254 712 345 678" required></label>
+            <label>Description <span class="market-optional">(optional)</span><textarea name="description" rows="3" maxlength="300" placeholder="Share quality, harvest date, delivery details..."></textarea></label>
+            <label class="market-image-label" for="listingImage">Product photo <span class="market-optional">(optional, JPG/PNG/WebP up to 5 MB)</span></label>
+            <input class="market-image-input" id="listingImage" name="image" type="file" accept="image/jpeg,image/png,image/webp">
+            <div class="market-image-preview" id="imagePreview" hidden>
+                <img id="imagePreviewPhoto" alt="Preview of the selected product photo">
+                <button class="market-image-remove" id="removeImage" type="button">Remove photo</button>
+            </div>
+            <p class="market-image-error" id="imageError" role="alert" hidden></p>
+            <button class="market-primary-button market-submit" id="publishListing" type="submit">Publish product</button>
+        </form>
+    </dialog>
+
+    <dialog class="market-dialog" id="bidDialog" aria-labelledby="bidDialogTitle">
+        <form class="market-form" id="bidForm">
+            <div class="market-dialog-heading">
+                <div><span class="market-kicker">MAKE AN OFFER</span><h2 id="bidDialogTitle">Send the farmer an offer</h2></div>
+                <button class="market-icon-button" type="button" data-close-dialog aria-label="Close">×</button>
+            </div>
+            <p class="market-form-intro" id="bidProductSummary"></p>
+            <label>Your name or business<input name="buyer" type="text" maxlength="60" required></label>
+            <div class="market-form-row">
+                <label>Your offer (KSh)<input name="offer" type="number" min="1" step="1" required></label>
+                <label>Quantity wanted<input name="quantity" type="number" min="1" step="1" value="1" required></label>
+            </div>
+            <label>How can the farmer reach you?<input name="contact" type="text" maxlength="80" placeholder="Phone number or email" required></label>
+            <label>Message <span class="market-optional">(optional)</span><textarea name="message" rows="3" maxlength="240" placeholder="Add a note for the farmer"></textarea></label>
+            <p class="market-privacy-note">Your offer is shared with the listing owner so they can contact you about the deal.</p>
+            <button class="market-primary-button market-submit" type="submit">Send offer</button>
+        </form>
+    </dialog>
+
+    <dialog class="market-dialog" id="offersDialog" aria-labelledby="offersDialogTitle">
+        <section class="market-form">
+            <div class="market-dialog-heading">
+                <div><span class="market-kicker">YOUR LISTING</span><h2 id="offersDialogTitle">Offers received</h2></div>
+                <button class="market-icon-button" type="button" data-close-dialog aria-label="Close">×</button>
+            </div>
+            <p class="market-form-intro" id="sellerContact"></p>
+            <div class="seller-offers-list" id="sellerOffersList"></div>
+        </section>
+    </dialog>
+
+    <dialog class="market-dialog" id="orderDialog" aria-labelledby="orderDialogTitle">
+        <section class="market-form">
+            <div class="market-dialog-heading">
+                <div><span class="market-kicker">PLACE AN ORDER</span><h2 id="orderDialogTitle">Contact the farmer</h2></div>
+                <button class="market-icon-button" type="button" data-close-dialog aria-label="Close">×</button>
+            </div>
+            <p class="market-form-intro" id="orderFarmer"></p>
+            <p class="market-order-phone" id="orderPhoneInfo"></p>
+            <div class="market-order-actions">
+                <a class="product-order-button" id="orderSmsLink" href="#" hidden>Text by SMS</a>
+                <a class="product-order-button" id="orderWhatsAppLink" href="#" target="_blank" rel="noopener noreferrer" hidden>Message on WhatsApp</a>
+                <button class="product-bid-button" id="copyOrderPhone" type="button" hidden>Copy phone number</button>
+            </div>
+            <p class="market-order-status" id="orderContactStatus" role="status" aria-live="polite"></p>
+        </section>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="account-client.js"></script>
+    <script src="marketplace.js"></script>
+</body>
+</html>
